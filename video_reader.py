@@ -204,7 +204,7 @@ class VideoDataset(torch.utils.data.Dataset):
             selected_files = []
             with open(f, "r") as fid:
                 data = fid.readlines()
-                data = [x.replace(' ', '_').lower() for x in data]
+                data = [x.replace(' ', '_') for x in data]
                 data = [x.strip().split(" ")[0] for x in data]
                 data = [os.path.splitext(os.path.split(x)[1])[0] for x in data]
                 

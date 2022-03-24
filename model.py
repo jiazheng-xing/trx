@@ -91,6 +91,8 @@ class TemporalCrossTransformer(nn.Module):
         for label_idx, c in enumerate(unique_labels):
         
             # select keys and values for just this class
+            support_labels = support_labels.to(device = mh_support_set_ks.device)
+            c = c.to(device = mh_support_set_ks.device)
             class_k = torch.index_select(mh_support_set_ks, 0, self._extract_class_indices(support_labels, c))
             class_v = torch.index_select(mh_support_set_vs, 0, self._extract_class_indices(support_labels, c))
             k_bs = class_k.shape[0]
@@ -170,7 +172,8 @@ class CNN_TRX(nn.Module):
 
         context_features = context_features.reshape(-1, self.args.seq_len, dim)
         target_features = target_features.reshape(-1, self.args.seq_len, dim)
-
+        
+        context_labels = context_labels.to(device = context_features.device)
         all_logits = [t(context_features, context_labels, target_features)['logits'] for t in self.transformers]
         all_logits = torch.stack(all_logits, dim=-1)
         sample_logits = all_logits 

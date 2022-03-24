@@ -1,0 +1,4 @@
+Options: Namespace(checkpoint_dir='./exp/hmdb51_r50_1shot', dataset='hmdb', debug_loader=False, img_size=224, learning_rate=0.001, method='resnet50', num_gpus=4, num_test_tasks=10000, num_workers=12, opt='sgd', path='/public/datasets_neo/hmdb51/extracted_frames', print_freq=1000, query_per_class=1, query_per_class_test=1, resume_from_checkpoint=False, save_freq=5000, sch=[1000000], scratch='./', seq_len=8, shot=1, split=3, tasks_per_batch=16, temp_set=[2, 3], test_iters=[5000], test_model_path=None, training_iterations=100020, traintestlist='././splits/hmdb_ARN', trans_dropout=0.1, trans_linear_in_dim=2048, trans_linear_out_dim=1152, way=5)
+
+Checkpoint Directory: ./exp/hmdb51_r50_1shot
+

@@ -112,8 +112,8 @@ class Learner:
         elif args.scratch == "bp":
             args.num_gpus = 4
             # this is low becuase of RAM constraints for the data loader
-            args.num_workers = 3
-            args.scratch = "/work/tp8961"
+            args.num_workers = 12
+            args.scratch =  './' #"/work/tp8961"
         
         if args.checkpoint_dir == None:
             print("need to specify a checkpoint dir")
@@ -136,9 +136,9 @@ class Learner:
             args.traintestlist = os.path.join(args.scratch, "video_datasets/splits/ucfTrainTestlist")
             args.path = os.path.join(args.scratch, "video_datasets/data/UCF-101_320.zip")
         elif args.dataset == "hmdb":
-            args.traintestlist = os.path.join(args.scratch, "video_datasets/splits/hmdb51TrainTestlist")
-            args.path = os.path.join(args.scratch, "video_datasets/data/hmdb51_256q5.zip")
-
+            args.traintestlist = os.path.join(args.scratch, "./splits/hmdb_ARN")
+            # args.path = os.path.join(args.scratch, "video_datasets/data/hmdb51_256q5.zip")
+            args.path ='/public/datasets_neo/hmdb51/extracted_frames'
         return args
 
     def run(self):
@@ -272,3 +272,5 @@ class Learner:
 
 if __name__ == "__main__":
     main()
+
+#python run.py -c checkpoint_dir --query_per_class 5 --shot 5 --way 5 --trans_linear_out_dim 1152 --tasks_per_batch 16 --test_iters 5000 --dataset hmdb --split 3 -lr 0.001 --method resnet50 --img_size 224
